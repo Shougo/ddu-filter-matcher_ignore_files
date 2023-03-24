@@ -39,6 +39,7 @@ EXAMPLES			*ddu-filter-matcher_ignore_files-examples*
 	call ddu#custom#patch_global(#{
 	    \   filterParams: #{
 	    \     matcher_ignore_files #{
+	    \       ignoreGlobs: ['test_*.vim'],
 	    \       ignorePatterns: ['/test_[^/]*.vim$'],
 	    \     },
 	    \   }
@@ -47,6 +48,12 @@ EXAMPLES			*ddu-filter-matcher_ignore_files-examples*
 
 ==============================================================================
 PARAMS				*ddu-filter-matcher_ignore_files-params*
+
+			*ddu-filter-matcher_ignore_files-param-ignoreGlobs*
+ignoreGlobs (string[])
+		The ignored files glob list.
+
+		Default: []
 
 			*ddu-filter-matcher_ignore_files-param-ignorePatterns*
 ignorePatterns (string[])

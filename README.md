@@ -28,6 +28,7 @@ call ddu#custom#patch_global(#{
 call ddu#custom#patch_global(#{
     \   filterParams: #{
     \     matcher_ignore_files #{
+    \       ignoreGlobs: ['test_*.vim'],
     \       ignorePatterns: ['/test_[^/]*.vim$'],
     \     },
     \   }
