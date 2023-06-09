@@ -1,7 +1,10 @@
-import { BaseFilter, DduItem } from "https://deno.land/x/ddu_vim@v2.5.0/types.ts";
-import { Denops } from "https://deno.land/x/ddu_vim@v2.5.0/deps.ts";
-import { ActionData } from "https://deno.land/x/ddu_kind_file@v0.3.2/file.ts";
-import { globToRegExp } from "https://deno.land/std@0.179.0/path/glob.ts";
+import {
+  BaseFilter,
+  DduItem,
+} from "https://deno.land/x/ddu_vim@v3.0.2/types.ts";
+import { Denops } from "https://deno.land/x/ddu_vim@v3.0.2/deps.ts";
+import { ActionData } from "https://deno.land/x/ddu_kind_file@v0.5.0/file.ts";
+import { globToRegExp } from "https://deno.land/std@0.191.0/path/glob.ts";
 
 type Params = {
   ignoreGlobs: string[];
@@ -9,19 +12,19 @@ type Params = {
 };
 
 export class Filter extends BaseFilter<Params> {
-  // deno-lint-ignore require-await
-  override async filter(args: {
+  override filter(args: {
     denops: Denops;
     filterParams: Params;
     items: DduItem[];
   }): Promise<DduItem[]> {
     const ignoreGlobs = args.filterParams.ignoreGlobs.map(
-      (glob) => globToRegExp('**/' + glob));
+      (glob) => globToRegExp("**/" + glob),
+    );
 
     return Promise.resolve(args.items.filter(
       (item) => {
         const action = item.action as ActionData;
-        if (!action.path) { return false; }
+        if (!action.path) return false;
         for (const pattern of args.filterParams.ignorePatterns) {
           if (action.path.search(pattern) >= 0) {
             return false;
@@ -33,7 +36,7 @@ export class Filter extends BaseFilter<Params> {
           }
         }
         return true;
-      }
+      },
     ));
   }
 
