@@ -4,7 +4,7 @@ import {
 } from "https://deno.land/x/ddu_vim@v4.0.0/types.ts";
 import { Denops } from "https://deno.land/x/ddu_vim@v4.0.0/deps.ts";
 import { ActionData } from "https://deno.land/x/ddu_kind_file@v0.7.1/file.ts";
-import { globToRegExp } from "jsr:@std/path@0.224.0/glob";
+import { globToRegExp } from "jsr:@std/path@0.224.0";
 
 type Params = {
   ignoreGlobs: string[];
